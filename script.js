@@ -1,3 +1,31 @@
+function search(){
+  
+  
+  
+    /*
+    
+    var respostaBem = ['bem', 'bom', 'sim', 'estou bem', 'sim, estou bem', 'ótimo', 'ótima', 'otimo', 'muito bem', 'ok', 'okay'];
+    respostaBem.toString();
+    var respostaRuim = ['ruim', 'mal', 'mau', 'enjoado', 'estranho', 'dor', 'cansada', 'cansado', 'mal estar', 'não', 'nao'];
+    respostaRuim.toString(); 
+    
+    */
+    
+    var resposta = document.getElementById("input").value;
+    
+    if (resposta == "bem" || resposta == "ótimo" || resposta == "ok") {
+       alert("Teste 1");
+    }
+    else if (resposta == "ruim" || resposta == "mal" || resposta == "mau") {
+      alert("Teste 2");
+    }
+    
+    
+    
+   }
+   
+
+
 class Messenger {
   constructor() {
     this.messageList = [];
@@ -87,6 +115,7 @@ class BuildHTML {
     return this._build(text, 'them');
   }
 }
+
 $(document).ready(function() {
   let messenger = new Messenger();
   let buildHTML = new BuildHTML();
@@ -147,6 +176,20 @@ $(document).ready(function() {
   messenger.onRecieve = buildRecieved;
   
   
+  
+  
+   setTimeout(() => {
+    messenger.recieve('Boa Tarde! Como você está? :) ');
+  }, 1500); 
+  
+  
+  
+  
+  
+  
+   
+  
+  
   $input.focus();
 
   $send.on('click', function(e) {
@@ -163,6 +206,9 @@ $(document).ready(function() {
     }
   });
 });
+
+
+
 
 
 
@@ -186,3 +232,4 @@ $(document).ready(function() {
 	})(jQuery);
 
 });
+
