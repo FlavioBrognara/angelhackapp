@@ -179,8 +179,22 @@ $(document).ready(function() {
   
   
    setTimeout(() => {
-    messenger.recieve('Boa Tarde! Como você está? :) ');
+    messenger.recieve('Olá! Como você está? :) ');
   }, 1500); 
+  
+    setTimeout(() => {
+    messenger.recieve('Mas o que exatamente você está sentindo?');
+  }, 10000); 
+  
+  
+    setTimeout(() => {
+    messenger.recieve('E faz quantos dias? :(');
+  }, 20000); 
+  
+  setTimeout(() => {
+    messenger.recieve('Aconselho que vá urgentemente para o médico... Tá rolando uma epidemia de H1N1! Cuidado!!! ');
+  }, 20000); 
+  
   
   
   
@@ -233,3 +247,65 @@ $(document).ready(function() {
 
 });
 
+
+function createUser() {
+	var name = $("#nome").val();
+	var email =$("#email").val();
+	var password = $("#senha").val(); //Min 8 characthers
+
+	$.ajax({
+	  type: 'POST',
+	  dataType: 'json',
+	  url: 'http://healthapp-angel.herokuapp.com/api/users/',
+	  async:false,
+	  data: {user:{nome: name, email: email, password: password, password_confirmation: password}},
+	  success: function(data){
+	  	//Colocar redirecionamento para tela de login
+	  	//o paramtro data recebe um atributo auth_token salvar na sessao
+	  	console.log(data)
+	  },
+	  error: function(jqXHR, textStatus, errorThrown){
+	  	//colocar alert de errors
+	  	console.log(textStatus, errorThrown)
+	  }
+	});
+}
+
+function loginUser() {
+	var email = $("#email").val();
+	var password = $("#senha"); //Min 8 characthers
+
+	$.ajax({
+	  type: 'POST',
+	  dataType: 'json',
+	  url: 'http://healthapp-angel.herokuapp.com/api/sessions/',
+	  async:false,
+	  data: {session:{email: email, password: password}},
+	  success: function(data){
+	  	//Colocar redirecionamento para tela de login
+	  	//o paramtro data recebe um atributo auth_token salvar na sessao
+	  	console.log(data)
+	  },
+	  error: function(jqXHR, textStatus, errorThrown){
+	  	//colocar alert de errors
+	  	console.log(textStatus, errorThrown)
+	  }
+	});
+}
+
+$.ajax({
+	  type: 'GET',
+	  dataType: 'json',
+	  url: 'http://healthapp-angel.herokuapp.com/users/',
+	  async:false,
+	  data: {id: 1},
+	  success: function(data){
+	  	//Colocar redirecionamento para tela de login
+	  	//o paramtro data recebe um atributo auth_token salvar na sessao
+	  	console.log(data)
+	  },
+	  error: function(jqXHR, textStatus, errorThrown){
+	  	//colocar alert de errors
+	  	console.log(textStatus, errorThrown)
+	  }
+	});
